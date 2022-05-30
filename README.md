@@ -8,6 +8,7 @@ This folder contains an smart contracts deployed on the HLF network.
 | -----------|------------------------------|---------|
 | [acl](acl) | Sample smart contract that allows you to create a shared list between participants. | Go |
 | [evote](evote) | Sample smart contract that allow for different parties to create polls and vote on them. | Go |
+| [logs](logs) | Sample smart contract to log actions to the ledger. | Go |
 
 ## License <a name="license"></a>
 Hyperledger Chaincode source code files are made available under the MIT License, located in the [LICENSE](LICENSE) file.
