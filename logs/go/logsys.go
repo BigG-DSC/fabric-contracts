@@ -30,16 +30,16 @@ package main
 
 import (
 	"log"
-	"evote/go/contract"
+	"logs/go/contract"
 	"github.com/hyperledger/fabric-contract-api-go/contractapi"
 )
 
 func main() {
-	evoteChaincode, err := contractapi.NewChaincode(&contract.SmartContract{})
+	logsChaincode, err := contractapi.NewChaincode(&contract.SmartContract{})
 	if err != nil {
 		log.Panicf("Error: %v", err)
 	}
-	if err := evoteChaincode.Start(); err != nil {
+	if err := logsChaincode.Start(); err != nil {
 		log.Panicf("Error: %v", err)
 	}
 }
