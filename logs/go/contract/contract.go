@@ -37,19 +37,19 @@ type SmartContract struct {
 	contractapi.Contract
 }
 
-// the business object
+// log object
 type Log struct {
 	Log string `json:"log"`
 }
 
-// the business object
+// user object
 type User struct {
 	ID string `json:"id"`
 	User string `json:"user"`
 	Logs []Log `json:"logs"`
 }
 
-// create a new voting record
+// create new user
 func (s *SmartContract) CreateUser(ctx contractapi.TransactionContextInterface, id string, user string) error {
 	user := User{
 		ID: id,
@@ -66,7 +66,7 @@ func (s *SmartContract) CreateUser(ctx contractapi.TransactionContextInterface, 
 	return ctx.GetStub().PutState(id, userJSON)
 } 
 
-// update a voting record, For
+// add log
 func (s *SmartContract) Log(ctx contractapi.TransactionContextInterface, id string, log string) error {
 	iuserJSON, err := ctx.GetStub().GetState(id)
 	var user User
@@ -83,7 +83,7 @@ func (s *SmartContract) Log(ctx contractapi.TransactionContextInterface, id stri
 	return ctx.GetStub().PutState(id, userJSON)
 } 
 
-// get one vote record
+// get user
 func (s *SmartContract) GetUser(ctx contractapi.TransactionContextInterface, id string) (*User, error) {
 	userJSON, err := ctx.GetStub().GetState(id)
 	if err != nil {
@@ -96,7 +96,7 @@ func (s *SmartContract) GetUser(ctx contractapi.TransactionContextInterface, id 
 	return &user, nil
 } 
 
-// get all the vote records
+// get all users
 func (s *SmartContract) GetAllUsers(ctx contractapi.TransactionContextInterface) ([]*User, error) {
 	result, err := ctx.GetStub().GetStateByRange("","")
 	if err != nil {
